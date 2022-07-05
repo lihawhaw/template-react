@@ -10,7 +10,8 @@
     "lint": "eslint ./src --ext .js,.ts,.tsx --cache --fix",
     "fix-code": "prettier-eslint --write 'src/**/*.{ts,tsx}'",
     "build:clean": "npm run clean && npm run build",
-    "bc": "npm run build:clean"
+    "bc": "npm run build:clean",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "lihawhaw@gmail.com",
@@ -22,6 +23,8 @@
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@swc/core": "^1.2.209",
     "@types/loadable__component": "^5.13.4",
     "@types/react": "^18.0.14",
@@ -39,6 +42,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.30.1",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
     "prettier": "^2.7.1",
     "swc-loader": "^0.2.3",
     "terser-webpack-plugin": "^5.3.3",
