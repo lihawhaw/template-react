@@ -10,6 +10,7 @@ const startAnalyzer = process.env.ANALYZER === 'true'
 const devtool = isProd ? false : 'source-map'
 const minimizer = []
 const basePlugin = []
+const baseRules = []
 
 if (startAnalyzer) {
   basePlugin.push(new BundleAnalyzerPlugin())
@@ -22,6 +23,34 @@ if (isProd) {
     }),
     new TerserPlugin(),
   )
+  baseRules.push({
+    test: /\.tsx?$/,
+    exclude: /(node_modules|bower_components)/,
+    use: {
+      loader: 'esbuild-loader',
+      options: {
+        loader: 'tsx',
+        target: 'es2015',
+        // tsconfigRaw: require('./tsconfig.json'),
+      },
+    },
+  })
+} else {
+  baseRules.push({
+    test: /\.tsx?$/,
+    exclude: /(node_modules|bower_components)/,
+    use: {
+      loader: 'swc-loader',
+      options: {
+        sync: true,
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+          },
+        },
+      },
+    },
+  })
 }
 
 module.exports = {
@@ -48,23 +77,7 @@ module.exports = {
     }),
   ],
   module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'swc-loader',
-          options: {
-            sync: true,
-            jsc: {
-              parser: {
-                syntax: 'typescript',
-              },
-            },
-          },
-        },
-      },
-    ],
+    rules: [...baseRules],
   },
   optimization: {
     minimizer,
