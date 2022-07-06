@@ -3,9 +3,17 @@ const { ESBuildMinifyPlugin } = require('esbuild-loader')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const isProd = process.env.NODE_ENV === 'production'
+const startAnalyzer = process.env.ANALYZER === 'true'
 const devtool = isProd ? false : 'source-map'
 const minimizer = []
+const basePlugin = []
+
+if (startAnalyzer) {
+  basePlugin.push(new BundleAnalyzerPlugin())
+}
 
 if (isProd) {
   minimizer.push(
@@ -34,6 +42,7 @@ module.exports = {
     plugins: [new TsconfigPathsPlugin()],
   },
   plugins: [
+    ...basePlugin,
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
