@@ -9,7 +9,7 @@ const NoMatch = loadable(() => import('@/components/no-match'))
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/tamplate-react'>
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
