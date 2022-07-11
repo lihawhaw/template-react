@@ -7,10 +7,12 @@ const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const isProd = process.env.NODE_ENV === 'production'
 const startAnalyzer = process.env.ANALYZER === 'true'
-const devtool = isProd ? false : 'source-map'
+const devtool = isProd ? false : 'eval-cheap-module-source-map'
 const minimizer = []
 const basePlugin = []
 const baseRules = []
+let chunkFilename = '[name].[chunkhash:8].chunk.js'
+let filename = '[name].[hash:8].js'
 
 if (startAnalyzer) {
   basePlugin.push(new BundleAnalyzerPlugin())
@@ -51,6 +53,9 @@ if (isProd) {
       },
     },
   })
+
+  filename = '[name].js'
+  chunkFilename = '[name].chunk.js'
 }
 
 module.exports = {
@@ -58,9 +63,10 @@ module.exports = {
   devtool,
   entry: './src/index.tsx',
   output: {
-    filename: '[name].[hash:8].js',
     path: path.resolve(__dirname, 'dist'),
-    chunkFilename: '[name].[chunkhash:8].chunk.js',
+    filename,
+    chunkFilename,
+    // asyncChunks: true,
   },
   cache: {
     type: 'filesystem',
@@ -101,5 +107,6 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    // http2: true,
   },
 }
