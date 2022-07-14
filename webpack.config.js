@@ -15,7 +15,7 @@ const devtool = isProd ? false : 'eval-cheap-module-source-map'
 const minimizer = []
 const basePlugin = []
 const baseRules = []
-const publicPath = '/'
+const publicPath = isProd ? '/template-react/' : '/'
 let chunkFilename = '[name].[chunkhash].chunk.js'
 let filename = '[name].[contenthash].bundle.js'
 
