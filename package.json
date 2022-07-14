@@ -6,13 +6,11 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build": " cross-env NODE_ENV=production webpack",
-    "clean": "rm -rf dist",
     "lint": "eslint ./src --ext .js,.ts,.tsx --cache --fix",
     "fix-code": "prettier-eslint --write 'src/**/*.{ts,tsx}'",
-    "build:clean": "npm run clean && npm run build",
-    "bc": "npm run build:clean",
     "prepare": "husky install",
-    "analyzer": "npm run build:clean && cross-env NODE_ENV=production ANALYZER=true webpack"
+    "analyzer": "cross-env NODE_ENV=production ANALYZER=true webpack",
+    "webpack:stats": "webpack --config webpack.config.js --profile --json > stats.json"
   },
   "keywords": [],
   "author": "lihawhaw@gmail.com",
@@ -46,6 +44,7 @@
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "prettier": "^2.7.1",
+    "speed-measure-webpack-plugin": "^1.5.0",
     "swc-loader": "^0.2.3",
     "terser-webpack-plugin": "^5.3.3",
     "tsconfig-paths-webpack-plugin": "^3.5.2",

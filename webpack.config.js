@@ -1,18 +1,23 @@
 const path = require('path')
+// const webpack = require('webpack')
 const { ESBuildMinifyPlugin } = require('esbuild-loader')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
+// const TerserPlugin = require('terser-webpack-plugin')
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+// const smp = new SpeedMeasurePlugin()
+// smp.wrap()
 const isProd = process.env.NODE_ENV === 'production'
 const startAnalyzer = process.env.ANALYZER === 'true'
 const devtool = isProd ? false : 'eval-cheap-module-source-map'
 const minimizer = []
 const basePlugin = []
 const baseRules = []
-let chunkFilename = '[name].[chunkhash:8].chunk.js'
-let filename = '[name].[hash:8].js'
+const publicPath = '/'
+let chunkFilename = '[name].[chunkhash].chunk.js'
+let filename = '[name].[contenthash].bundle.js'
 
 if (startAnalyzer) {
   basePlugin.push(new BundleAnalyzerPlugin())
@@ -23,7 +28,7 @@ if (isProd) {
     new ESBuildMinifyPlugin({
       target: 'es2015',
     }),
-    new TerserPlugin(),
+    // new TerserPlugin({ parallel: true, minify: TerserPlugin.esbuildMinify }),
   )
   baseRules.push({
     test: /\.tsx?$/,
@@ -58,14 +63,17 @@ if (isProd) {
   chunkFilename = '[name].chunk.js'
 }
 
+/** @type {import('webpack').Configuration} */
 module.exports = {
   mode: process.env.NODE_ENV,
   devtool,
   entry: './src/index.tsx',
   output: {
+    publicPath,
     path: path.resolve(__dirname, 'dist'),
     filename,
     chunkFilename,
+    clean: true,
     // asyncChunks: true,
   },
   cache: {
@@ -86,6 +94,9 @@ module.exports = {
     rules: [...baseRules],
   },
   optimization: {
+    runtimeChunk: 'single',
+    moduleIds: 'deterministic',
+    minimize: true,
     minimizer,
     splitChunks: {
       chunks: 'all',
