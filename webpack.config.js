@@ -1,21 +1,22 @@
 const path = require('path')
-// const webpack = require('webpack')
+const webpack = require('webpack')
 const { ESBuildMinifyPlugin } = require('esbuild-loader')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const TerserPlugin = require('terser-webpack-plugin')
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
-// const smp = new SpeedMeasurePlugin()
-// smp.wrap()
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+const smp = new SpeedMeasurePlugin()
+
 const isProd = process.env.NODE_ENV === 'production'
 const startAnalyzer = process.env.ANALYZER === 'true'
+const isSped = process.env.SPEED === 'true'
 const devtool = isProd ? false : 'eval-cheap-module-source-map'
+const CUSTOM_PUBLIC_PATH = process.env.PUBLIC_PATH
 const minimizer = []
 const basePlugin = []
 const baseRules = []
-const publicPath = isProd ? '/template-react/' : '/'
+const publicPath = isProd ? CUSTOM_PUBLIC_PATH : '/'
 let chunkFilename = '[name].[chunkhash].chunk.js'
 let filename = '[name].[contenthash].bundle.js'
 
@@ -63,8 +64,8 @@ if (isProd) {
   chunkFilename = '[name].chunk.js'
 }
 
-/** @type {import('webpack').Configuration} */
-module.exports = {
+/** @type {import("webpack").Configuration} */
+const webpackConfig = {
   mode: process.env.NODE_ENV,
   devtool,
   entry: './src/index.tsx',
@@ -89,13 +90,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
+    new webpack.DefinePlugin({
+      __BASENAME__: JSON.stringify(process.env.BASENAME),
+    }),
   ],
   module: {
     rules: [...baseRules],
   },
   optimization: {
     runtimeChunk: 'single',
-    moduleIds: 'deterministic',
+    moduleIds: 'deterministic', // 'deterministic' 'named'
     minimize: true,
     minimizer,
     splitChunks: {
@@ -108,16 +112,38 @@ module.exports = {
           name: 'react',
           priority: -1,
         },
+        reactRouterVendor: {
+          test: /[\\/]node_modules[\\/](react-router|react-router-dom|history)[\\/]/,
+          name: 'react-router',
+          priority: -2,
+        },
+        loadableVendor: {
+          test: /[\\/]node_modules[\\/](@loadable|@babel)/,
+          name: 'loadable',
+          priority: -3,
+        },
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          priority: -99,
+          name(module) {
+            const packageName = module.context.match(
+              /[\\/]node_modules[\\/].pnpm[\\/](.*?)([\\/]|$)/,
+            )[1]
+            return `${packageName.replace('@', '_')}`
+          },
+          priority: -10,
         },
       },
     },
   },
   devServer: {
     historyApiFallback: true,
+    compress: true,
     // http2: true,
   },
+}
+
+if (isSped) {
+  module.exports = smp.wrap(webpackConfig)
+} else {
+  module.exports = webpackConfig
 }

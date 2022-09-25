@@ -1,18 +1,31 @@
 import React from 'react'
-import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import loadable from '@loadable/component'
-// import Layout from '@/layout'
+import Layout from '@/layout'
 
-const Home = loadable(() => import('@/pages/home'))
-const About = loadable(() => import('@/pages/about'))
-const NoMatch = loadable(() => import('@/components/no-match'))
+const Index = loadable(
+  () => import(/* webpackChunkName: 'index' */ '@/pages/index'),
+)
+const Home = loadable(
+  () => import(/* webpackChunkName: 'home' */ '@/pages/home'),
+)
+const About = loadable(
+  () => import(/* webpackChunkName: 'about' */ '@/pages/about'),
+)
+const NoMatch = loadable(
+  () => import(/* webpackChunkName: 'not-match' */ '@/components/no-match'),
+)
 
 export default function AppRouter() {
   return (
-    <BrowserRouter basename='template-react'>
+    // eslint-disable-next-line no-undef
+    <BrowserRouter basename={__BASENAME__}>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='about' element={<About />} />
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Index />} />
+          <Route path='about' element={<About />} />
+          <Route path='home' element={<Home />} />
+        </Route>
         <Route path='*' element={<NoMatch />} />
       </Routes>
     </BrowserRouter>
