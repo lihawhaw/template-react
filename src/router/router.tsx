@@ -1,7 +1,7 @@
+import Layout from '@/layout'
+import loadable from '@loadable/component'
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import loadable from '@loadable/component'
-import Layout from '@/layout'
 
 const Index = loadable(
   () => import(/* webpackChunkName: 'index' */ '@/pages/index'),
