@@ -1,0 +1,34 @@
+// Vitest Snapshot v1
+
+exports[`NormalLink changes the class when hovered 1`] = `
+<a
+  className="normal"
+  href="https://lihaha.cn"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  李哈哈
+</a>
+`;
+
+exports[`NormalLink changes the class when hovered 2`] = `
+<a
+  className="hovered"
+  href="https://lihaha.cn"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  李哈哈
+</a>
+`;
+
+exports[`NormalLink changes the class when hovered 3`] = `
+<a
+  className="normal"
+  href="https://lihaha.cn"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  李哈哈
+</a>
+`;
