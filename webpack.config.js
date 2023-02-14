@@ -8,6 +8,7 @@ const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const { merge } = require('webpack-merge')
 const productionConfig = require('./scripts/webpack/webpack.prod')
 const developmentConfig = require('./scripts/webpack/webpack.dev')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const smp = new SpeedMeasurePlugin()
 const NODE_ENV = process.env.NODE_ENV
 const isProd = NODE_ENV === 'production'
@@ -38,6 +39,7 @@ const commonConfig = {
     plugins: [new TsconfigPathsPlugin()],
   },
   plugins: [
+    new ForkTsCheckerWebpackPlugin(),
     ...basePlugin,
     new HtmlWebpackPlugin({
       template: './public/index.html',
@@ -46,6 +48,9 @@ const commonConfig = {
       __BASENAME__: JSON.stringify(process.env.BASENAME),
     }),
   ],
+  watchOptions: {
+    ignored: /node_modules/,
+  },
   devServer: {
     historyApiFallback: true,
     compress: true,
