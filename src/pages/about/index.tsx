@@ -5,7 +5,7 @@ export default function AboutPage() {
   return (
     <div>
       AboutPage
-      <Link to='/a/about'>Home</Link>
+      <Link to='/error-page'>Error Page</Link>
     </div>
   )
 }

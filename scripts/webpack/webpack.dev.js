@@ -1,14 +1,15 @@
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const DashboardPlugin = require('webpack-dashboard/plugin')
 
 /** @type {import("webpack").Configuration} */
 const config = {
   mode: 'development',
-  devtool: false,
+  devtool: 'eval-cheap-module-source-map',
   output: {
     filename: '[name].js',
     chunkFilename: '[name].chunk.js',
   },
-  plugins: [new ReactRefreshWebpackPlugin()],
+  plugins: [new ReactRefreshWebpackPlugin(), new DashboardPlugin()],
   module: {
     rules: [
       {

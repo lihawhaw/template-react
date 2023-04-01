@@ -1,14 +1,22 @@
 const TerserPlugin = require('terser-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 /** @type {import("webpack").Configuration} */
 const config = {
   mode: 'production',
-  devtool: 'eval-cheap-module-source-map',
+  devtool: false,
   output: {
     chunkFilename: '[name].[chunkhash].chunk.js',
     filename: '[name].[contenthash].bundle.js',
+    assetModuleFilename: 'images/[hash][ext][query]',
   },
-  plugins: [],
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css',
+      chunkFilename: 'css/[id].[contenthash].css',
+      // ignoreOrder: true,
+    }),
+  ],
   module: {
     rules: [
       {
@@ -57,16 +65,21 @@ const config = {
           name: 'router',
           priority: -2,
         },
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            const packageName = module.context.match(
-              /[\\/]node_modules[\\/].pnpm[\\/](.*?)([\\/]|$)/,
-            )[1]
-            return `${packageName.replace('@', '_')}`
-          },
-          priority: -10,
+        ohterVendor: {
+          test: /node_modules/,
+          name: 'ohter',
+          priority: -99,
         },
+        // vendor: {
+        //   test: /[\\/]node_modules[\\/]/,
+        //   name(module) {
+        //     const packageName = module.context.match(
+        //       /[\\/]node_modules[\\/].pnpm[\\/](.*?)([\\/]|$)/,
+        //     )[1]
+        //     return `${packageName.replace('@', '_')}`
+        //   },
+        //   priority: -10,
+        // },
       },
     },
   },
