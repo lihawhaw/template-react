@@ -1,5 +1,6 @@
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 /** @type {import("webpack").Configuration} */
 const config = {
@@ -16,6 +17,7 @@ const config = {
       chunkFilename: 'css/[id].[contenthash].css',
       // ignoreOrder: true,
     }),
+    new CssMinimizerPlugin(),
   ],
   module: {
     rules: [
