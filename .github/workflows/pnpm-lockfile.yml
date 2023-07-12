@@ -1,6 +1,8 @@
 # https://github.com/dependabot/dependabot-core/issues/1736
 name: Dependabot
-on: pull_request_target
+on: 
+  pull_request_target:
+  workflow_dispatch:
 jobs:
   pnpm-lockfile:
     if: ${{ github.actor == 'dependabot[bot]' }}
