@@ -43,7 +43,7 @@
     "@vitest/ui": "^0.29.8",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
-    "css-minimizer-webpack-plugin": "^5.0.0",
+    "css-minimizer-webpack-plugin": "^5.0.1",
     "esbuild-loader": "^3.0.1",
     "eslint": "8.37.0",
     "eslint-config-prettier": "^8.8.0",
