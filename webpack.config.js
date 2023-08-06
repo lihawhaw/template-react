@@ -75,6 +75,12 @@ const commonConfig = {
         type: 'asset',
       },
     ],
+    // parser: {
+    //   javascript: {
+    //     wrappedContextRegExp: /.*/,
+    //     wrappedContextRecursive: true,
+    //   },
+    // },
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
