@@ -101,8 +101,8 @@ devDependencies:
     specifier: ^8.0.0
     version: 8.0.0(typescript@5.1.6)(webpack@5.88.2)
   happy-dom:
-    specifier: ^10.5.2
-    version: 10.5.2
+    specifier: ^10.11.0
+    version: 10.11.0
   html-webpack-plugin:
     specifier: ^5.5.3
     version: 5.5.3(webpack@5.88.2)
@@ -1778,7 +1778,7 @@ packages:
       magic-string: 0.30.2
       picocolors: 1.0.0
       std-env: 3.3.3
-      vitest: 0.34.1(@vitest/ui@0.33.0)(happy-dom@10.5.2)
+      vitest: 0.34.1(@vitest/ui@0.33.0)(happy-dom@10.11.0)
     dev: true
 
   /@vitest/expect@0.34.1:
@@ -1823,7 +1823,7 @@ packages:
       pathe: 1.1.1
       picocolors: 1.0.0
       sirv: 2.0.3
-      vitest: 0.34.1(@vitest/ui@0.33.0)(happy-dom@10.5.2)
+      vitest: 0.34.1(@vitest/ui@0.33.0)(happy-dom@10.11.0)
     dev: true
 
   /@vitest/utils@0.33.0:
@@ -3203,7 +3203,7 @@ packages:
     dependencies:
       domelementtype: 2.3.0
       domhandler: 5.0.3
-      entities: 4.4.0
+      entities: 4.5.0
     dev: true
 
   /domelementtype@2.3.0:
@@ -3337,11 +3337,6 @@ packages:
 
   /entities@2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
-    dev: true
-
-  /entities@4.4.0:
-    resolution: {integrity: sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA==}
-    engines: {node: '>=0.12'}
     dev: true
 
   /entities@4.5.0:
@@ -4565,8 +4560,8 @@ packages:
       uglify-js: 3.17.4
     dev: true
 
-  /happy-dom@10.5.2:
-    resolution: {integrity: sha512-dTA1cDcLOPIkAdykLd9Wo1k8Ly36Hh2OdKGkWEHWuAHb89KcVVRLSj1OFev7ir90xhRLSGCGrEdDvS6u9l13kg==}
+  /happy-dom@10.11.0:
+    resolution: {integrity: sha512-CmUT4LOLzvAsbYqgTJESrPyvF0gxLDkDG/KK1o/HYU7+c9o/VVIKXl3feJZnuCYbGqemw7meiQaZcL4SMgn1jQ==}
     dependencies:
       css.escape: 1.5.1
       entities: 4.5.0
@@ -7978,7 +7973,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest@0.34.1(@vitest/ui@0.33.0)(happy-dom@10.5.2):
+  /vitest@0.34.1(@vitest/ui@0.33.0)(happy-dom@10.11.0):
     resolution: {integrity: sha512-G1PzuBEq9A75XSU88yO5G4vPT20UovbC/2osB2KEuV/FisSIIsw7m5y2xMdB7RsAGHAfg2lPmp2qKr3KWliVlQ==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -8023,7 +8018,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 10.5.2
+      happy-dom: 10.11.0
       local-pkg: 0.4.3
       magic-string: 0.30.2
       pathe: 1.1.1
