@@ -101,8 +101,8 @@ devDependencies:
     specifier: ^8.0.0
     version: 8.0.0(typescript@5.1.6)(webpack@5.88.2)
   happy-dom:
-    specifier: ^12.9.0
-    version: 12.9.0
+    specifier: ^12.9.1
+    version: 12.9.1
   html-webpack-plugin:
     specifier: ^5.5.3
     version: 5.5.3(webpack@5.88.2)
@@ -1777,7 +1777,7 @@ packages:
       magic-string: 0.30.2
       picocolors: 1.0.0
       std-env: 3.3.3
-      vitest: 0.34.1(@vitest/ui@0.34.6)(happy-dom@12.9.0)
+      vitest: 0.34.1(@vitest/ui@0.34.6)(happy-dom@12.9.1)
     dev: true
 
   /@vitest/expect@0.34.1:
@@ -1822,7 +1822,7 @@ packages:
       pathe: 1.1.1
       picocolors: 1.0.0
       sirv: 2.0.3
-      vitest: 0.34.1(@vitest/ui@0.34.6)(happy-dom@12.9.0)
+      vitest: 0.34.1(@vitest/ui@0.34.6)(happy-dom@12.9.1)
     dev: true
 
   /@vitest/utils@0.34.1:
@@ -4557,8 +4557,8 @@ packages:
       uglify-js: 3.17.4
     dev: true
 
-  /happy-dom@12.9.0:
-    resolution: {integrity: sha512-Ap/bcno2k5316FYDqBJ2i0O1zS78W1jsNR4F/p2t3zdNoa+2H0k851RGef4STfIKdTwcQ/nk5Tx9d5BzQXfTrw==}
+  /happy-dom@12.9.1:
+    resolution: {integrity: sha512-UvQ3IwKn1G3iiNCdTrhijdLGqf8Vj7d3OpmYcPwlKakjFy83oYbW6TmOKDLMTVLO9whmOC1HIpS09wf/14k7cA==}
     dependencies:
       css.escape: 1.5.1
       entities: 4.5.0
@@ -7966,7 +7966,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest@0.34.1(@vitest/ui@0.34.6)(happy-dom@12.9.0):
+  /vitest@0.34.1(@vitest/ui@0.34.6)(happy-dom@12.9.1):
     resolution: {integrity: sha512-G1PzuBEq9A75XSU88yO5G4vPT20UovbC/2osB2KEuV/FisSIIsw7m5y2xMdB7RsAGHAfg2lPmp2qKr3KWliVlQ==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -8011,7 +8011,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 12.9.0
+      happy-dom: 12.9.1
       local-pkg: 0.4.3
       magic-string: 0.30.2
       pathe: 1.1.1
