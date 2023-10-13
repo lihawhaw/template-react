@@ -48,3 +48,27 @@ textarea,
 select {
   font: inherit;
 }
+
+#root {
+  min-height: 100%;
+}
+
+.fade-enter {
+  z-index: 1;
+  opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 0.4s ease-in;
+}
+
+.fade-exit {
+  z-index: 0;
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
