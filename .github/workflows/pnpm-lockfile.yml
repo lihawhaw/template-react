@@ -23,7 +23,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
       - name: Push
-      - run: |
+        run: |
           git add pnpm-lock.yaml
           git commit -m "chore: dependabot[bot] update pnpm-lock.yaml"
           git push
