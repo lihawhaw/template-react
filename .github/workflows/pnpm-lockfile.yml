@@ -25,5 +25,5 @@ jobs:
       - name: Push
         run: |
           git add pnpm-lock.yaml
-          git commit -m "chore: dependabot[bot] update pnpm-lock.yaml"
+          git commit -m "chore: dependabot[bot] update pnpm-lock.yaml" || echo "No changes to commit"
           git push
