@@ -1,6 +1,6 @@
 # https://github.com/dependabot/dependabot-core/issues/1736
 name: Dependabot
-on: 
+on:
   pull_request_target:
   workflow_dispatch:
 jobs:
@@ -18,9 +18,12 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
       - run: pnpm i --lockfile-only
-      - run: |
+      - name: Set git identity
+        run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Push
+      - run: |
           git add pnpm-lock.yaml
           git commit -m "chore: dependabot[bot] update pnpm-lock.yaml"
           git push
