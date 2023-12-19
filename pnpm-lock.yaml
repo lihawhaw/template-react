@@ -47,8 +47,8 @@ devDependencies:
     specifier: ^18.2.15
     version: 18.2.15
   '@types/react-test-renderer':
-    specifier: ^18.0.3
-    version: 18.0.3
+    specifier: ^18.0.7
+    version: 18.0.7
   '@types/react-transition-group':
     specifier: ^4.4.10
     version: 4.4.10
@@ -1491,8 +1491,8 @@ packages:
       '@types/react': 18.2.37
     dev: true
 
-  /@types/react-test-renderer@18.0.3:
-    resolution: {integrity: sha512-4wcNLnY6nIT+L6g94CpzL4CXX2P18JvKPU9CDlaHr3DnbP3GiaQLhDotJqjWlVqOcE4UhLRjp0MtxqwuNKONnA==}
+  /@types/react-test-renderer@18.0.7:
+    resolution: {integrity: sha512-1+ANPOWc6rB3IkSnElhjv6VLlKg2dSv/OWClUyZimbLsQyBn8Js9Vtdsi3UICJ2rIQ3k2la06dkB+C92QfhKmg==}
     dependencies:
       '@types/react': 18.2.37
     dev: true
