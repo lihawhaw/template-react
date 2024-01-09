@@ -22,12 +22,7 @@ const NormalLink = ({ href, children }: NormalLinkProps) => {
   }
 
   return (
-    <a
-      className={status}
-      href={href || '#'}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
+    <a className={status} href={href || '#'} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       {children}
     </a>
   )
