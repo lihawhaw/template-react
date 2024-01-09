@@ -22,5 +22,13 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'enumMember',
+        format: ['PascalCase'],
+        leadingUnderscore: 'forbid',
+      },
+    ],
   },
 }
