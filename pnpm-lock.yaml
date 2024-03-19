@@ -107,8 +107,8 @@ devDependencies:
     specifier: ^9.0.2
     version: 9.0.2(typescript@5.3.3)(webpack@5.90.0)
   happy-dom:
-    specifier: ^13.3.8
-    version: 13.3.8
+    specifier: ^14.0.0
+    version: 14.0.0
   html-webpack-plugin:
     specifier: ^5.6.0
     version: 5.6.0(webpack@5.90.0)
@@ -4208,8 +4208,8 @@ packages:
       uglify-js: 3.17.4
     dev: true
 
-  /happy-dom@13.3.8:
-    resolution: {integrity: sha512-RAbq4oYfJNkVan1m1F3jfA4YEyRY0/ASoNvZsNJbuX85jIypidmsz9jQZD7Tqz0VXA2MhAGfcsh5oshwmwNYSg==}
+  /happy-dom@14.0.0:
+    resolution: {integrity: sha512-XdxaqufN4QZs0WFuo7L4vGkKpj08gmpEpSMFxDtvYo4OipZLssz7VlavE03FuLabHBTJAWxcR6MlKyOQZM9e0w==}
     engines: {node: '>=16.0.0'}
     dependencies:
       entities: 4.5.0
