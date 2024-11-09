@@ -7,7 +7,7 @@ const config = {
   mode: 'production',
   devtool: false,
   output: {
-    chunkFilename: '[name].[chunkhash].chunk.js',
+    chunkFilename: '[name].[contenthash].chunk.js',
     filename: '[name].[contenthash].bundle.js',
     assetModuleFilename: 'images/[hash][ext][query]',
   },
@@ -46,7 +46,7 @@ const config = {
     minimize: true,
     minimizer: [
       new TerserPlugin({
-        minify: TerserPlugin.swcMinify,
+        minify: TerserPlugin.esbuildMinify,
         terserOptions: {
           //
         },
@@ -67,9 +67,9 @@ const config = {
           name: 'router',
           priority: -2,
         },
-        ohterVendor: {
+        otherVendor: {
           test: /node_modules/,
-          name: 'ohter',
+          name: 'other',
           priority: -99,
         },
         // vendor: {
